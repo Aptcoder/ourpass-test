@@ -23,8 +23,9 @@ export default class UserController {
 
   @UseGuards(AuthGuard('jwt'))
   @Get('/')
-  getAllUsers() {
-    return this.userUseCases.getAllUsers();
+  async getAllUsers() {
+    const users = await this.userUseCases.getAllUsers();
+    return Helper.formatResponse('Users', { users })
   }
 
   @Post('/signup')
