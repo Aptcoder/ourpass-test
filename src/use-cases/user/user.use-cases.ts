@@ -1,13 +1,10 @@
 import {
   ConflictException,
-  Inject,
   Injectable,
-  NotFoundException,
   UnauthorizedException,
 } from '@nestjs/common';
-import { User } from 'src/core';
-import IDataService from 'src/core/abstracts/data-service';
-import { SignInUserDto, SignUpUserDto } from 'src/core/dtos/user.dtos';
+import IDataService from '../../core/abstracts/data-service';
+import { SignInUserDto, SignUpUserDto } from '../../core/dtos/user.dtos';
 import * as bcrypt from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
 
