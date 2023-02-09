@@ -1,10 +1,15 @@
 import {
   ConflictException,
   Injectable,
+  NotFoundException,
   UnauthorizedException,
 } from '@nestjs/common';
 import IDataService from '../../core/abstracts/data-service';
-import { SignInUserDto, SignUpUserDto } from '../../core/dtos/user.dtos';
+import {
+  SignInUserDto,
+  SignUpUserDto,
+  UpdateUserDto,
+} from '../../core/dtos/user.dtos';
 import * as bcrypt from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
 
@@ -61,5 +66,27 @@ export default class UserUseCases {
 
     const accessToken = this.jwtService.sign(payload);
     return { user: existingUser, accessToken };
+  }
+
+  async updateUser(updateUserDto: UpdateUserDto, userId: string) {
+    const existingUser = await this.dataservice.users.findOne({
+      where: {
+        id: userId,
+      },
+    });
+    if (!existingUser) {
+      throw new NotFoundException('User not found');
+    }
+
+    const user = await this.dataservice.users.save(
+      {
+        id: userId,
+        ...updateUserDto,
+      },
+      {
+        reload: true,
+      },
+    );
+    return user;
   }
 }

@@ -20,3 +20,13 @@ export class SignUpUserDto extends SignInUserDto {
   @IsString()
   lastName: string;
 }
+
+export class UpdateUserDto {
+  @IsNotEmpty()
+  @IsString()
+  firstName: string;
+
+  @IsNotEmpty()
+  @IsString()
+  lastName: string;
+}

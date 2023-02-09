@@ -1,6 +1,19 @@
-import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Param,
+  Post,
+  Put,
+  UseGuards,
+  Request,
+} from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
-import { SignInUserDto, SignUpUserDto } from 'src/core/dtos/user.dtos';
+import {
+  SignInUserDto,
+  SignUpUserDto,
+  UpdateUserDto,
+} from 'src/core/dtos/user.dtos';
 import Helper from 'src/helpers';
 import UserUseCases from '../use-cases/user/user.use-cases';
 
@@ -26,5 +39,16 @@ export default class UserController {
       signInUserDto,
     );
     return Helper.formatResponse('User signed in', { user, accessToken });
+  }
+
+  @Put('/')
+  @UseGuards(AuthGuard('jwt'))
+  async updateUserProfile(
+    @Body() updateUserDto: UpdateUserDto,
+    @Request() req,
+  ) {
+    const { user_uuid: userId } = req.user;
+    const user = await this.userUseCases.updateUser(updateUserDto, userId);
+    return Helper.formatResponse('User updated', { user });
   }
 }
