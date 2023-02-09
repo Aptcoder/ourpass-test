@@ -12,6 +12,7 @@ import {
 } from '../../core/dtos/user.dtos';
 import * as bcrypt from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
+import os from 'os';
 
 @Injectable()
 export default class UserUseCases {
@@ -64,7 +65,9 @@ export default class UserUseCases {
 
     const payload = { user_uuid: existingUser.id };
 
-    const accessToken = this.jwtService.sign(payload);
+    const accessToken = this.jwtService.sign(payload, {
+      issuer: os.hostname(),
+    });
     return { user: existingUser, accessToken };
   }
 

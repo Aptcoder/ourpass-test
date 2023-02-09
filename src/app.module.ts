@@ -1,7 +1,6 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import * as config from 'config';
 import UserController from './controllers/user.controller';
 import DataServiceModule from './services/data-services/data-service.module';
@@ -19,6 +18,5 @@ import PostController from './controllers/post.controller';
     PostUseCasesModule,
   ],
   controllers: [AppController, UserController, PostController],
-  providers: [AppService],
 })
 export class AppModule {}
