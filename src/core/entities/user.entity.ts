@@ -30,6 +30,6 @@ export class User extends BaseEntity {
   })
   password: string;
 
-  @Column({ type: 'timestamptz' })
+  @Column({ type: 'timestamptz', nullable: true })
   deletedAt: Date;
 }
