@@ -12,7 +12,7 @@ module.exports = {
     username: 'postgres',
     password: 'wonderful.',
     database: 'ourpass-test',
-    synchronize: true,
+    synchronize: false,
     autoLoadEntities: true,
   },
 };
