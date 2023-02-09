@@ -1,5 +1,6 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
-import { SignUpUserDto } from 'src/core/dtos/user.dtos';
+import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
+import { AuthGuard } from '@nestjs/passport';
+import { SignInUserDto, SignUpUserDto } from 'src/core/dtos/user.dtos';
 import Helper from 'src/helpers';
 import UserUseCases from '../use-cases/user/user.use-cases';
 
@@ -7,6 +8,7 @@ import UserUseCases from '../use-cases/user/user.use-cases';
 export default class UserController {
   constructor(private readonly userUseCases: UserUseCases) {}
 
+  @UseGuards(AuthGuard('jwt'))
   @Get('/')
   getAllUsers() {
     return this.userUseCases.getAllUsers();
@@ -16,5 +18,13 @@ export default class UserController {
   async signUp(@Body() signUpUserDto: SignUpUserDto) {
     const user = await this.userUseCases.signUpUser(signUpUserDto);
     return Helper.formatResponse('User signed up', { user });
+  }
+
+  @Post('/signin')
+  async signIn(@Body() signInUserDto: SignInUserDto) {
+    const { user, accessToken } = await this.userUseCases.signInUser(
+      signInUserDto,
+    );
+    return Helper.formatResponse('User signed in', { user, accessToken });
   }
 }
