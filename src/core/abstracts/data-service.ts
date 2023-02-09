@@ -1,6 +1,6 @@
-import { Repository } from 'typeorm';
 import { User } from '../entities/user.entity';
+import IRepository from './generic-repository';
 
 export default abstract class IDataService {
-  users: Repository<User>;
+  users: IRepository<User>;
 }
