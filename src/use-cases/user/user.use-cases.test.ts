@@ -20,6 +20,9 @@ describe('User use cases', () => {
         delete() {
           return Promise.resolve({});
         },
+        save() {
+          return Promise.resolve({});
+        },
         findOne() {
           return Promise.resolve(new User());
         },

@@ -1,9 +1,10 @@
 import {
   ConflictException,
   Injectable,
+  NotFoundException,
   UnauthorizedException,
 } from '@nestjs/common';
-import { CreatePostDto } from 'src/core/dtos/post.dtos';
+import { CreatePostDto, UpdatePostDto } from 'src/core/dtos/post.dtos';
 import IDataService from '../../core/abstracts/data-service';
 
 @Injectable()
@@ -34,5 +35,28 @@ export default class PostUseCases {
     });
 
     return true;
+  }
+
+  async updatePost(updatePostDto: UpdatePostDto, postId, userId) {
+    const existingPost = await this.dataservice.posts.findOne({
+      where: {
+        id: postId,
+        userId,
+      },
+    });
+    if (!existingPost) {
+      throw new NotFoundException('Post not found');
+    }
+    const updatedPost = this.dataservice.posts.save(
+      {
+        id: existingPost.id,
+        ...updatePostDto,
+      },
+      {
+        reload: true,
+      },
+    );
+
+    return updatedPost;
   }
 }

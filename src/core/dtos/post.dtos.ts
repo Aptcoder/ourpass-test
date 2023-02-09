@@ -11,4 +11,4 @@ export class CreatePostDto {
   body: string;
 }
 
-export class UpdatePostDto extends PartialType(CreatePostDto) {}
+export class UpdatePostDto extends CreatePostDto {}

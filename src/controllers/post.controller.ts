@@ -5,12 +5,14 @@ import {
   Get,
   HttpCode,
   Param,
+  Patch,
   Post,
+  Put,
   Request,
   UseGuards,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
-import { CreatePostDto } from 'src/core/dtos/post.dtos';
+import { CreatePostDto, UpdatePostDto } from 'src/core/dtos/post.dtos';
 import Helper from 'src/helpers';
 import PostUseCases from 'src/use-cases/post/post.use-cases';
 
@@ -41,5 +43,22 @@ export default class PostController {
     const { user_uuid: userId } = req.user;
     await this.postUseCases.deletePost(postId, userId);
     return Helper.formatResponse(`Post deleted`);
+  }
+
+  @UseGuards(AuthGuard('jwt'))
+  @Put('/:postId')
+  @HttpCode(200)
+  async updatePost(
+    @Body() updatePostDto: UpdatePostDto,
+    @Param('postId') postId: string,
+    @Request() req,
+  ) {
+    const { user_uuid: userId } = req.user;
+    const post = await this.postUseCases.updatePost(
+      updatePostDto,
+      postId,
+      userId,
+    );
+    return Helper.formatResponse(`Post updated`, { post });
   }
 }
