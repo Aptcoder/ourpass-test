@@ -1,3 +1,4 @@
+import { Factory } from 'nestjs-seeder';
 import {
   BaseEntity,
   Entity,
@@ -13,16 +14,19 @@ export class Post extends BaseEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
+  @Factory((faker) => faker.datatype.string())
   @Column({
     nullable: false,
   })
   title: string;
 
+  @Factory((faker) => faker.datatype.string())
   @Column({
     nullable: false,
   })
   body: string;
 
+  @Factory((faker, ctx) => ctx.userId)
   @Column({
     nullable: false,
   })
