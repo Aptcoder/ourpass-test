@@ -1,13 +1,13 @@
 import { JwtModule } from '@nestjs/jwt';
 import { Test, TestingModule } from '@nestjs/testing';
-import { JwtStrategy } from './jwt.strategy';
-import UserUseCases from './user.use-cases';
+import { JwtStrategy } from '../../src/use-cases/user/jwt.strategy';
+import UserUseCases from '../../src/use-cases/user/user.use-cases';
 import * as config from 'config';
-import IDataService from '../../core/abstracts/data-service';
-import { User } from '../../core';
-import IRepository from 'src/core/abstracts/generic-repository';
+import IDataService from '../../src/core/abstracts/data-service';
+import { User } from '../../src/core';
+import IRepository from ' ../../src//core/abstracts/generic-repository';
 import { ConflictException } from '@nestjs/common';
-import { Post } from 'src/core/entities/post.entity';
+import { Post } from '../../src/core/entities/post.entity';
 
 describe('User use cases', () => {
   let userUserCases: UserUseCases;

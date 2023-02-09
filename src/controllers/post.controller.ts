@@ -12,11 +12,11 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
-import { CreatePostDto, UpdatePostDto } from 'src/core/dtos/post.dtos';
-import Helper from 'src/helpers';
-import PostUseCases from 'src/use-cases/post/post.use-cases';
+import { CreatePostDto, UpdatePostDto } from '../core/dtos/post.dtos';
+import Helper from '../helpers';
+import PostUseCases from '../use-cases/post/post.use-cases';
 
-@Controller('posts')
+@Controller('api/v1/posts')
 export default class PostController {
   constructor(private readonly postUseCases: PostUseCases) {}
 

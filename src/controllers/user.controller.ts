@@ -13,11 +13,11 @@ import {
   SignInUserDto,
   SignUpUserDto,
   UpdateUserDto,
-} from 'src/core/dtos/user.dtos';
-import Helper from 'src/helpers';
+} from '../core/dtos/user.dtos';
+import Helper from '../helpers';
 import UserUseCases from '../use-cases/user/user.use-cases';
 
-@Controller('users')
+@Controller('api/v1/users')
 export default class UserController {
   constructor(private readonly userUseCases: UserUseCases) {}
 
@@ -25,7 +25,7 @@ export default class UserController {
   @Get('/')
   async getAllUsers() {
     const users = await this.userUseCases.getAllUsers();
-    return Helper.formatResponse('Users', { users })
+    return Helper.formatResponse('Users', { users });
   }
 
   @Post('/signup')

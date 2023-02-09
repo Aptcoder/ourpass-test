@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import DataServiceModule from 'src/services/data-services/data-service.module';
+import DataServiceModule from '../../services/data-services/data-service.module';
 import UserUseCases from './user.use-cases';
 import * as config from 'config';
 import { JwtStrategy } from './jwt.strategy';
