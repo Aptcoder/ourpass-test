@@ -1,5 +1,8 @@
-import { Injectable } from '@nestjs/common';
-import { CreateCategoryDto } from '../../core/dtos/category.dtos';
+import { Injectable, NotFoundException } from '@nestjs/common';
+import {
+  CreateCategoryDto,
+  UpdateCategoryDto,
+} from '../../core/dtos/category.dtos';
 import IDataService from '../../core/abstracts/data-service';
 
 @Injectable()
@@ -24,5 +27,27 @@ export default class CategoryUseCases {
     });
 
     return true;
+  }
+
+  async updateCategory(updateCategoryDto: UpdateCategoryDto, categoryId) {
+    const existingCategory = await this.dataservice.categories.findOne({
+      where: {
+        id: categoryId,
+      },
+    });
+    if (!existingCategory) {
+      throw new NotFoundException('Category not found');
+    }
+    const updatedcategory = this.dataservice.categories.save(
+      {
+        id: existingCategory.id,
+        ...updateCategoryDto,
+      },
+      {
+        reload: true,
+      },
+    );
+
+    return updatedcategory;
   }
 }
