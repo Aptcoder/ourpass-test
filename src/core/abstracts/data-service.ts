@@ -1,3 +1,4 @@
+import { Category } from '../entities/category.entity';
 import { Post } from '../entities/post.entity';
 import { User } from '../entities/user.entity';
 import IRepository from './generic-repository';
@@ -5,4 +6,5 @@ import IRepository from './generic-repository';
 export default abstract class IDataService {
   users: IRepository<User>;
   posts: IRepository<Post>;
+  categories: IRepository<Category>;
 }
