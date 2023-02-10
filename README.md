@@ -47,7 +47,7 @@ I have also provided a postman documentation of the API here
 
 https://documenter.getpostman.com/view/11384363/2s935snMhm#intro for your perusal 📝
 
-In the invent, you prefer a quicker documentation, here's an alternative: 
+In the event, you prefer a quicker documentation, here's an alternative: 
 
 ### Alternate API Documentation
 
@@ -206,7 +206,7 @@ All API responses are of the format:
 
 This project tries to utilize the [clean code architecture](http://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html) by uncle bob to attain a serparation of concerns, testablility(shown at tests/unit) and maintainability.
 
-Some import structures of the project:
+Some important structures of the project:
 
 - src/user-cases: Business logic utilized by controller
 - src/services: Services used in the use-cases, such as the database service which is the data lawyer
