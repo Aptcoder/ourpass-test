@@ -45,6 +45,18 @@ https://documenter.getpostman.com/view/11384363/2s935snMhm#intro
 
 ### Alternate API Documentation
 
+All API responses are of the format:
+
+```
+{
+  "status": <boolean>,
+  "message": <string>,
+  "data": <object>
+}
+
+
+```
+
 #### Users API
 
 - GET api/v1/users
