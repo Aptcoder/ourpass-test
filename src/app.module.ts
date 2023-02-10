@@ -14,7 +14,7 @@ import CategoryController from './controllers/category.controller';
   imports: [
     TypeOrmModule.forRoot({
       ...config.get('typeorm'),
-      ssl: true,
+      ssl: config.get('ssl'),
     }),
     DataServiceModule,
     UserUseCasesModule,

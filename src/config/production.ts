@@ -21,6 +21,7 @@ export const typeorm = {
 export default {
   jwt_secret,
   typeorm,
+  ssl: true,
   jwt_options,
   port: process.env.PORT || 5000,
 };

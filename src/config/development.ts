@@ -3,6 +3,7 @@ import * as dotenv from 'dotenv';
 dotenv.config();
 
 export const jwt_secret = process.env.JWT_SECRET;
+
 export const jwt_options = {
   secret: process.env.JWT_SECRET,
   signOptions: { expiresIn: '3600s' },
@@ -13,7 +14,7 @@ export const typeorm = {
   port: 5432,
   username: process.env.DB_USERNAME,
   password: process.env.DB_PASSWORD,
-  database: 'ourpass_tdoc',
+  database: 'ourpass-test',
   synchronize: false,
   autoLoadEntities: true,
 };
@@ -21,6 +22,7 @@ export const typeorm = {
 export default {
   jwt_secret,
   typeorm,
+  ssl: false,
   jwt_options,
   port: process.env.PORT || 5000,
 };
