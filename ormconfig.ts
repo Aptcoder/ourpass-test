@@ -11,4 +11,5 @@ export const dataSource = new DataSource({
   logging: false,
   migrations: ['src/migrations/**/*.ts'],
   entities: ['src/**/*.entity.ts'],
+  ssl: true,
 });

@@ -9,6 +9,7 @@ seeder({
   imports: [
     TypeOrmModule.forRoot({
       ...config.get('typeorm'),
+      ssl: true,
     }),
     TypeOrmModule.forFeature([User, Post]),
   ],
