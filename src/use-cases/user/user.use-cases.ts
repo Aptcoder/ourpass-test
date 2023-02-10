@@ -12,7 +12,7 @@ import {
 } from '../../core/dtos/user.dtos';
 import * as bcrypt from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
-import os from 'os';
+import * as os from 'os';
 
 @Injectable()
 export default class UserUseCases {
