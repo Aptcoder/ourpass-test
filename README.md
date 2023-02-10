@@ -132,14 +132,14 @@ https://documenter.getpostman.com/view/11384363/2s935snMhm#intro
 
   Requires a request body of format:
 
-```
+  ```
 
-{
-"title": string,
-"body": string
-}
+  {
+  "title": string,
+  "body": string
+  }
 
-```
+  ```
 
 ### File structure
 
