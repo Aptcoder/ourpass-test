@@ -12,6 +12,7 @@ import PostController from './controllers/post.controller';
   imports: [
     TypeOrmModule.forRoot({
       ...config.get('typeorm'),
+      ssl: true,
     }),
     DataServiceModule,
     UserUseCasesModule,
