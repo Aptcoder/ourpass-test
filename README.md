@@ -17,6 +17,10 @@ The following features are worked on this repo
 - Get all user's posts
 - Get all users
 - Signin a user (login)
+- Get all categories
+- Delete category
+- Update a category
+- Create a category
 
 ### How to setup
 
@@ -153,9 +157,52 @@ All API responses are of the format:
 
   ```
 
+#### Categories API
+
+- GET /api/v1/categories
+
+  Summary: Get all of a users categories
+
+  Requires auth
+
+- POST /api/v1/categories
+  Summary: Create a new category
+
+  Requires auth
+
+  Requires a request body of format:
+
+  ```
+  {
+  "name": string,
+  "description": string
+  }
+  ```
+
+- DELETE /api/v1/categories/:categoryId
+
+  Summary: Deletes category
+
+  Requires auth
+
+- PUT /api/v1/categories/:categoryId
+
+  Summary: Update existing category
+
+  Requires auth
+
+  Requires a request body of format:
+
+  ```
+  {
+  "name": string,
+  "description": string
+  }
+  ```
+
 ### File structure
 
-This project tries to utilize the code architecture by uncle bob to attain a serparation of concerns, testablility and maintainability.
+This project tries to utilize the [code architecture](http://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html) by uncle bob to attain a serparation of concerns, testablility(shown at tests/unit) and maintainability.
 
 Some import structures of the project:
 
