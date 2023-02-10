@@ -1,8 +1,20 @@
-import { Body, Controller, Delete, Get, Param, Post, UseGuards } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Post,
+  Put,
+  UseGuards,
+} from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import CategoryUseCases from '../use-cases/category/category.use-cases';
 import Helper from '../helpers';
-import { CreateCategoryDto } from '../core/dtos/category.dtos';
+import {
+  CreateCategoryDto,
+  UpdateCategoryDto,
+} from '../core/dtos/category.dtos';
 
 @Controller('api/v1/categories')
 export default class CategoryController {
@@ -26,8 +38,21 @@ export default class CategoryController {
 
   @UseGuards(AuthGuard('jwt'))
   @Delete('/:categoryId')
-  async deletePost(@Param('categoryId') categoryId: string) {
+  async deleteCategory(@Param('categoryId') categoryId: string) {
     await this.categoryUseCases.deleteCategory(categoryId);
     return Helper.formatResponse(`Category deleted`);
+  }
+
+  @UseGuards(AuthGuard('jwt'))
+  @Put('/:categoryId')
+  async updateCategory(
+    @Body() updateCategoryDto: UpdateCategoryDto,
+    @Param('categoryId') categoryId: string,
+  ) {
+    const category = await this.categoryUseCases.updateCategory(
+      updateCategoryDto,
+      categoryId,
+    );
+    return Helper.formatResponse(`Category updated`, { category });
   }
 }
