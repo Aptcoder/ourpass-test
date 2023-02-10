@@ -11,10 +11,18 @@ export default class CategoryUseCases {
   }
 
   async createCategory(createCategoryDto: CreateCategoryDto) {
-    let category = this.dataservice.posts.create({
+    let category = this.dataservice.categories.create({
       ...createCategoryDto,
     });
     category = await category.save();
     return category;
+  }
+
+  async deleteCategory(categoryId: string) {
+    await this.dataservice.categories.delete({
+      id: categoryId,
+    });
+
+    return true;
   }
 }

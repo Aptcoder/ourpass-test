@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, UseGuards } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import CategoryUseCases from '../use-cases/category/category.use-cases';
 import Helper from '../helpers';
@@ -22,5 +22,12 @@ export default class CategoryController {
       createCategoryDto,
     );
     return Helper.formatResponse(`Category created`, { category });
+  }
+
+  @UseGuards(AuthGuard('jwt'))
+  @Delete('/:categoryId')
+  async deletePost(@Param('categoryId') categoryId: string) {
+    await this.categoryUseCases.deleteCategory(categoryId);
+    return Helper.formatResponse(`Category deleted`);
   }
 }
