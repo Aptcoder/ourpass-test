@@ -8,6 +8,7 @@ import { User } from '../../src/core';
 import IRepository from ' ../../src//core/abstracts/generic-repository';
 import { ConflictException } from '@nestjs/common';
 import { Post } from '../../src/core/entities/post.entity';
+import { Category } from 'src/core/entities/category.entity';
 
 describe('User use cases', () => {
   let userUserCases: UserUseCases;
@@ -15,6 +16,7 @@ describe('User use cases', () => {
   class DataServiceFixture implements IDataService {
     users: IRepository<User>;
     posts: IRepository<Post>;
+    categories: IRepository<Category>;
     constructor() {
       this.users = {
         delete() {

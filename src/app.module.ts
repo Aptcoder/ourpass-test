@@ -7,6 +7,8 @@ import DataServiceModule from './services/data-services/data-service.module';
 import UserUseCasesModule from './use-cases/user/user-use-cases.module';
 import PostUseCasesModule from './use-cases/post/post-use-cases.module';
 import PostController from './controllers/post.controller';
+import CategoryUseCasesModule from './use-cases/category/category-use-case.module';
+import CategoryController from './controllers/category.controller';
 
 @Module({
   imports: [
@@ -17,7 +19,13 @@ import PostController from './controllers/post.controller';
     DataServiceModule,
     UserUseCasesModule,
     PostUseCasesModule,
+    CategoryUseCasesModule,
   ],
-  controllers: [AppController, UserController, PostController],
+  controllers: [
+    AppController,
+    UserController,
+    PostController,
+    CategoryController,
+  ],
 })
 export class AppModule {}
