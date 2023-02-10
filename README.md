@@ -1,4 +1,4 @@
-### Navigation of readme
+### Navigation of readme 🗺️
 
 - [Task completed](#tasks-completed)
 - [How to setup](#how-to-setup)
@@ -7,7 +7,7 @@
 
 ### Tasks completed
 
-The following features are worked on this repo
+The following features are worked on in this repo
 
 - Signup a user (signup)
 - Create a post '/api/v1/posts'
@@ -30,7 +30,7 @@ The project can be setup by cloning the repo with
 then, installing dependencies
 `npm install`
 
-run migrations. edit the config in src/config with your db credentials
+run migrations. edit the config in src/config and ormconfig.ts with your db credentials
 `npm run migration:run`
 
 run seeders.
@@ -41,11 +41,13 @@ start development server
 
 ### Deployment and documentation
 
-The project is deployed live at https://ourpass-test.onrender.com/api/v1/users
+The project is deployed live 🚀 at https://ourpass-test.onrender.com/api/v1/users
 
 I have also provided a postman documentation of the API here
 
-https://documenter.getpostman.com/view/11384363/2s935snMhm#intro
+https://documenter.getpostman.com/view/11384363/2s935snMhm#intro for your perusal 📝
+
+In the invent, you prefer a quicker documentation, here's an alternative: 
 
 ### Alternate API Documentation
 
@@ -202,7 +204,7 @@ All API responses are of the format:
 
 ### File structure
 
-This project tries to utilize the [code architecture](http://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html) by uncle bob to attain a serparation of concerns, testablility(shown at tests/unit) and maintainability.
+This project tries to utilize the [clean code architecture](http://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html) by uncle bob to attain a serparation of concerns, testablility(shown at tests/unit) and maintainability.
 
 Some import structures of the project:
 
@@ -215,3 +217,5 @@ Some import structures of the project:
 ```
 
 ```
+
+Thank you for your time😁
